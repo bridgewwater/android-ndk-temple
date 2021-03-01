@@ -5,7 +5,7 @@ apply from: rootProject.file("gradle/nexusUpload.gradle")
 android {
     compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
 
-//    ndkVersion "22.0.7026061" // ndk-setting: ndk version
+    ndkVersion "22.0.7026061" // ndk-setting: ndk version
 
     defaultConfig {
         minSdkVersion ANDROID_MIN_SDK_VERSION as int
@@ -34,7 +34,7 @@ android {
         abi { // ndk-setting: abi split
             enable true
             reset()
-            include 'armeabi-v7a', "arm64-v8a"
+            include 'armeabi-v7a', "arm64-v8a", "x86", "x86_64"
             universalApk false
         }
     }
