@@ -1,0 +1,128 @@
+apply plugin: 'com.android.library'
+// uploadArchives
+apply from: rootProject.file("gradle/nexusUpload.gradle")
+
+android {
+    compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
+
+//    ndkVersion "22.0.7026061" // ndk-setting: ndk version
+
+    defaultConfig {
+        minSdkVersion ANDROID_MIN_SDK_VERSION as int
+        targetSdkVersion ANDROID_TARGET_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+//        multiDexEnabled true
+
+        externalNativeBuild {
+            cmake { // ndk-setting: arguments cFlags cppFlags
+                arguments "-DANDROID_TOOLCHAIN=clang",
+                        "-DANDROID_PLATFORM=android-21" // see build_command.txt to check platform version at $module_root/.cxx
+//                cFlags ""
+//                cppFlags ""
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake { // ndk-setting: load CMakeLists.txt and above AndroidStudio 3.5 code in src/main/cpp
+            path file('src/main/cpp/CMakeLists.txt')
+        }
+    }
+
+    splits {
+        abi { // ndk-setting: abi split
+            enable true
+            reset()
+            include 'armeabi-v7a', "arm64-v8a"
+            universalApk false
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // for androidx close warning
+        disable 'GoogleAppIndexingWarning'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        encoding "UTF-8"
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            jniDebuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.libraryVariants.all { variant ->
+        def defaultName = projectDir.name
+        def buildType = variant.buildType.name
+        if (buildType == 'debug') {
+            variant.outputs.all {
+                outputFileName = hasProperty('POM_ARTIFACT_ID') ? POM_ARTIFACT_ID : defaultName + "-${buildType}-${System.currentTimeMillis()}" + '.aar'
+            }
+        } else {
+//            variant.outputs.all {
+//                outputFileName = hasProperty('POM_ARTIFACT_ID') ? POM_ARTIFACT_ID : defaultName + "-${defaultConfig.versionName.replace('-SNAPSHOT', '')}" + '.aar'
+//            }
+        }
+    }
+}
+
+dependencies {
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // test start
+    // Junit
+    testImplementation test_depends.junit,
+            // Mockito
+            test_depends.mockito_core,
+            // Robolectric
+            test_depends.robolectric,
+            test_depends.androidx_test_core,
+            // deprecated
+//            test_depends.robolectric_shadows_support_v4,
+            // EasyMock
+            test_depends.easymock,
+            // PowerMock
+            test_depends.powermock_core,
+            test_depends.powermock_module_junit4,
+            // PowerMock + EasyMock extension
+            test_depends.powermock_api_easymock
+
+    //    androidTestCompile android_test_depends.robotium_solo
+    // test end
+
+    compileOnly depends_android_x.androidx_annotation
+//            depends_android_x.androidx_appcompat,
+//            depends_android_x.androidx_recyclerview,
+//            depends_android_x.androidx_cardview,
+//            depends_android_x.com_google_android_material_material,
+//            depends_android_x.androidx_legacy_support_v4
+
+//    api depends_android_x.com_google_android_material_material,
+//            depends_android_x.androidx_appcompat
+
+    // you can use compileOnly for only compile
+//    compileOnly depends.gson
+    if (isReleaseBuild()) {
+        //todo release depends
+    } else {
+        //todo snapshot depends
+    }
+}

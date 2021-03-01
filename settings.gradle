@@ -1,0 +1,2 @@
+include ':ndkmodule'
+include ':demo'
