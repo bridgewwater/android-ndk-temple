@@ -28,7 +28,7 @@ extern "C" {
 // write log use as: WRITE_LOG(n2JGetExternalCacheDirPath(env), "-> log: %s\n", "this is log");
 #define WRITE_LOG(cache_folder, s, ...) do { \
 char *fileStr = (char *) malloc(84); \
-sprintf(fileStr, "%s/ndk_log.txt", cache_folder); \
+sprintf(fileStr, "%s/ndkmodule_log.log", cache_folder); \
 FILE *f = fopen(fileStr, "a+"); \
   fprintf(f, s, __VA_ARGS__); \
   fflush(f); \
@@ -38,7 +38,7 @@ FILE *f = fopen(fileStr, "a+"); \
 // use as: WRITE_LOG_PATH_PRINT(n2JGetExternalCacheDirPath(env));
 #define WRITE_LOG_PATH_PRINT(cache_folder) do { \
 char *fileStr = (char *) malloc(84); \
-sprintf(fileStr, "%s/ndk_log.txt", cache_folder); \
+sprintf(fileStr, "%s/ndkmodule_log.log", cache_folder); \
 __android_log_print(ANDROID_LOG_WARN, "WRITE_LOG_PATH", "%s", fileStr);\
 } while (0)
 
