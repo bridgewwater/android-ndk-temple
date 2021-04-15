@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 // uploadArchives
-apply from: rootProject.file("gradle/nexusUpload.gradle")
+apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
 
 android {
     compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int

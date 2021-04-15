@@ -124,7 +124,7 @@ android {
 
 ...
 // uploadArchives
-apply from: rootProject.file("gradle/nexusUpload.gradle")
+apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
 ```
 
 # nexus upload
