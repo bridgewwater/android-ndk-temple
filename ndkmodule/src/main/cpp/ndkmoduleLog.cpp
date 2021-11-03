@@ -10,7 +10,7 @@
 #define HEX_VALUES "0123456789ABCDEF"
 
 char *jstring2cStr(JNIEnv *env, jstring jstr) {
-    const char *temp = (char *) env->GetStringUTFChars(jstr, NULL);
+    const char *temp = (char *) env->GetStringUTFChars(jstr, JNI_FALSE);
     char *ret = (char *) malloc(strlen(temp) + 1);
     strcpy(ret, temp);
     env->ReleaseStringUTFChars(jstr, temp);
@@ -37,8 +37,21 @@ char *char2Hex(unsigned char c, char *hexValue) {
     return hexValue;
 }
 
+double jDouble2Double(JNIEnv *env, jdouble jdn) {
+    if (0.0 == jdn) {
+        return 0;
+    }
+    return jdn;
+}
+
+//jint jintArrayParse(JNIEnv* env, jintArray attr){
+//    const jint * arr = (jint *) env -> GetIntArrayElements(attr, JNI_FALSE);
+//    env->ReleaseIntArrayElements(attr, arr, 0);
+//
+//}
+
 jobject n2JGetApplication(JNIEnv *env) {
-    jclass localClass = env->FindClass( "android/app/ActivityThread");
+    jclass localClass = env->FindClass("android/app/ActivityThread");
     if (localClass != nullptr) {
         jmethodID getApplication = env->GetStaticMethodID(localClass, "currentApplication",
                                                           "()Landroid/app/Application;");
@@ -70,10 +83,13 @@ char *n2JGetExternalCacheDirPath(JNIEnv *env) {
         return nullptr;
     }
     jclass activity = env->GetObjectClass(context);
-    jmethodID methodID_externalCacheDir = env->GetMethodID(activity, "getExternalCacheDir", "()Ljava/io/File;");
+    jmethodID methodID_externalCacheDir = env->GetMethodID(activity, "getExternalCacheDir",
+                                                           "()Ljava/io/File;");
     jobject getExternalCacheDirObj = env->CallObjectMethod(context, methodID_externalCacheDir);
     jclass getExternalCacheDirClass = env->GetObjectClass(getExternalCacheDirObj);
-    jmethodID methodID_AbsolutePath = env->GetMethodID(getExternalCacheDirClass, "getAbsolutePath", "()Ljava/lang/String;");
-    auto dir_str = static_cast<jstring>(env->CallObjectMethod(getExternalCacheDirObj, methodID_AbsolutePath));
+    jmethodID methodID_AbsolutePath = env->GetMethodID(getExternalCacheDirClass, "getAbsolutePath",
+                                                       "()Ljava/lang/String;");
+    auto dir_str = static_cast<jstring>(env->CallObjectMethod(getExternalCacheDirObj,
+                                                              methodID_AbsolutePath));
     return jstring2cStr(env, dir_str);
 }

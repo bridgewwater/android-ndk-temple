@@ -94,44 +94,63 @@ dependencies {
 
     // test start
     // Junit
-    testImplementation test_depends.junit,
+    testImplementation test_depends["junit:junit"],
             // Mockito
-            test_depends.mockito_core,
+            test_depends["org.mockito:mockito-core"],
             // Robolectric
-            test_depends.robolectric,
-            test_depends.androidx_test_core,
+            test_depends["org.robolectric:robolectric"],
+            test_depends["androidx.test:core"],
             // deprecated
 //            test_depends.robolectric_shadows_support_v4,
             // EasyMock
-            test_depends.easymock,
+            test_depends["org.easymock:easymock"],
             // PowerMock
-            test_depends.powermock_core,
-            test_depends.powermock_module_junit4,
+            test_depends["org.powermock:powermock-core"],
+            test_depends["org.powermock:powermock-module-junit4"],
             // PowerMock + EasyMock extension
-            test_depends.powermock_api_easymock
+            test_depends["org.powermock:powermock-api-easymock"]
 
-    androidTestImplementation android_test_depends.androidx_test_ext_junit,
-            android_test_depends.androidx_test_espresso_espresso_core
+    androidTestImplementation android_test_depends["androidx.test.ext:junit"],
+            android_test_depends["androidx.test.espresso:espresso-core"]
 
     //    androidTestImplementation android_test_depends.robotium_solo
     // test end
 
-    debugImplementation depends_debug.com_hjq_logcat // logcat window https://github.com/getActivity/Logcat
+    // logcat window https://github.com/getActivity/Logcat
+    debugImplementation depends_debug["com.hjq:logcat"]
 
     // butter knife only for module test!
 //    implementation depends.butterknife
 //    annotationProcessor apt_compiler.butterknife_compiler
 
     // implementation base
-    implementation depends.com_hjq_toast
-    implementation depends.com_hjq_xxpermissions
-    implementation depends_android_x.androidx_legacy_support_v4,
-            depends_android_x.androidx_appcompat,
-//            depends_android_x.androidx_recyclerview,
-//            depends_android_x.androidx_cardview,
-//            depends_android_x.com_google_android_material_material,
-            depends_android_x.androidx_annotation
+    implementation depends_android_x["androidx.annotation:annotation"],
+//            depends_android_x["androidx.legacy:legacy-support-v4"],
+            depends_android_x["androidx.recyclerview:recyclerview"],
+//            depends_android_x["androidx.cardview:cardview"],
+//            depends_android_x["com.google.android.material:material"],
+            depends_android_x["androidx.appcompat:appcompat"]
+
+    // glide
+//    annotationProcessor depends_annotation["com.github.bumptech.glide:compiler"]
+//    implementation depends["com.github.bumptech.glide:glide"]
+
+    // implementation biz
+    implementation depends["com.jakewharton.timber:timber"]
+    implementation depends["com.hjq:xxpermissions"]
+    implementation depends["com.hjq:toast"]
+// https://github.com/EastWoodYang/AutoQuickAdapter
+    implementation depends["com.eastwood.common:auto-quick-adapter"]
 
     // TODO load module
     implementation project(':ndkmodule')
+
+    if (isReleaseBuild()) {
+        //todo release depends
+//        implementation ''
+    } else {
+        // todo load local module
+//     implementation project(':plugin')
+    }
+
 }

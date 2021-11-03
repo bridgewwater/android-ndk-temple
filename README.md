@@ -33,7 +33,7 @@ repo: [https://github.com/bridgewwater/android-ndk-temple](https://github.com/br
 | junit:junit:                   | 4.12    |
 | org.robolectric:robolectric    | 4.4     |
 
-more version see [package.gradle](package.gradle)
+more version see [config.gradle](config.gradle)
 
 ## warning
 

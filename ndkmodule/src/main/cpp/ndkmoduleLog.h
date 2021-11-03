@@ -51,6 +51,9 @@ jstring cStr2jstring(JNIEnv *env, const char *pat);
 // char转为16进制
 char *char2Hex(unsigned char c, char *hexValue);
 
+
+jint jintArrayParse(JNIEnv* env, jintArray Attr);
+
 jobject n2JGetApplication(JNIEnv *env);
 
 // 获取当前 app 包名
