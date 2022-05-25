@@ -14,23 +14,25 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="4"
+            android:columnCount="10"
             android:orientation="horizontal"
             android:rowCount="6">
 
             <Button
                 android:id="@+id/btn_init_check"
                 style="@style/Sinlov.Button.Menu"
-                android:layout_columnSpan="2"
+                android:layout_columnSpan="5"
+                android:layout_columnWeight="5"
                 android:layout_gravity="fill"
                 android:text="module init check" />
 
             <Button
-                android:id="@+id/btn_biz"
+                android:id="@+id/btn_version"
                 style="@style/Sinlov.Button.Menu"
-                android:layout_columnSpan="2"
+                android:layout_columnSpan="5"
+                android:layout_columnWeight="5"
                 android:layout_gravity="fill"
-                android:text="do biz" />
+                android:text="show version" />
 
         </GridLayout>
 

@@ -28,7 +28,7 @@ public class CopyActivity extends AbsTemplateActivity {
         tvResult = findViewById(R.id.tv_result);
         setOnClickListener(
                 R.id.btn_init_check,
-                R.id.btn_biz
+                R.id.btn_version
         );
     }
 
@@ -42,9 +42,9 @@ public class CopyActivity extends AbsTemplateActivity {
         int id = view.getId();
         if (id == R.id.btn_init_check) {
             toastBottom("module init check");
-        } else if (id == R.id.btn_biz) {
-            toast("Do Biz");
-            showInfo("Do Biz");
+        } else if (id == R.id.btn_version) {
+            toast("want show version");
+            showInfo("want show version");
         }
     }
 
