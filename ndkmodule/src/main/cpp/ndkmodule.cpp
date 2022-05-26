@@ -24,3 +24,8 @@ Java_com_sinlov_android_ndkmodule_Plugin_sayHello(JNIEnv *env, jobject thiz) {
     WRITE_LOG(n2JGetExternalCacheDirPath(env), "-> log: %s\n", hello.c_str());
     return env->NewStringUTF(hello.c_str());
 }
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_sinlov_android_ndkmodule_Plugin_version(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF(ndkmoduleVersion);
+}

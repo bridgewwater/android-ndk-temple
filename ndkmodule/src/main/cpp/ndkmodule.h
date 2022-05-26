@@ -5,7 +5,7 @@
 #ifndef ANDROID_NDK_TEMPLE_NDKMODULE_H
 #define ANDROID_NDK_TEMPLE_NDKMODULE_H
 
-
+const char *ndkmoduleVersion = "1.0.0";
 
 class ndkmodule {
 

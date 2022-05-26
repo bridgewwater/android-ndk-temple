@@ -11,6 +11,8 @@ public final class Plugin {
 
     public native String sayHello();
 
+    public native String version();
+
     /**
      * do biz
      */
