@@ -1,12 +1,12 @@
 
-[00-package](00-package.md)
+[00-config](00-config.md)
 
-- [package](00-package.md#package)
-    - [notes](00-package.md#notes)
-    - [config depend](00-package.md#config-depend)
-    - [Setting depend](00-package.md#setting-depend)
-    - [use project center dependencies](00-package.md#use-project-center-dependencies)
-    - [add new dependencies](00-package.md#add-new-dependencies)
+- [package](00-config.md#package)
+    - [notes](00-config.md#notes)
+    - [config depend](00-config.md#config-depend)
+    - [Setting depend](00-config.md#setting-depend)
+    - [use project center dependencies](00-config.md#use-project-center-dependencies)
+    - [add new dependencies](00-config.md#add-new-dependencies)
 
 
 [01-utils-use](01-utils-use.md)
@@ -27,15 +27,6 @@
 - [build scan](02-buildScan-use.md#build-scan)
 
 
-[03-nexusUpload-use](03-nexusUpload-use.md)
-
-- [Nexus public utils](03-nexusUpload-use.md#nexus-public-utils)
-    - [notes](03-nexusUpload-use.md#notes)
-    - [Setting Plugin](03-nexusUpload-use.md#setting-plugin)
-        - [POM_PACKAGING](03-nexusUpload-use.md#pom_packaging)
-- [nexus upload](03-nexusUpload-use.md#nexus-upload)
-
-
 [04-codeQuality-use](04-codeQuality-use.md)
 
 - [code Quality](04-codeQuality-use.md#code-quality)
@@ -49,25 +40,27 @@
     - [checkstyle coverage](04-codeQuality-use.md#checkstyle-coverage)
 
 
-[05-sonarqubeAnalysis-use](05-sonarqubeAnalysis-use.md)
+[/checkstyle/checkstyle-android-use](/checkstyle/checkstyle-android-use.md)
 
-- [sonarqube Analysis](05-sonarqubeAnalysis-use.md#sonarqube-analysis)
-    - [notes](05-sonarqubeAnalysis-use.md#notes)
-    - [Setting Plugin](05-sonarqubeAnalysis-use.md#setting-plugin)
-- [analysis](05-sonarqubeAnalysis-use.md#analysis)
+- [jacoco-android](/checkstyle/checkstyle-android-use.md#jacoco-android)
+    - [notes](/checkstyle/checkstyle-android-use.md#notes)
+    - [checkstyle coverage](/checkstyle/checkstyle-android-use.md#checkstyle-coverage)
 
 
-[README](README.md)
+[/maven/nexusUpload-use](/maven/nexusUpload-use.md)
 
-- [Gradle Plugin](README.md#gradle-plugin)
-    - [Use](README.md#use)
-- [dependencies](README.md#dependencies)
-    - [update](README.md#update)
-    - [seeDependencies](README.md#seedependencies)
-- [**Running the Unit Tests:**](README.md#**running-the-unit-tests:**)
-    - [single unit test](README.md#single-unit-test)
-    - [test with devices](README.md#test-with-devices)
-- [build APK](README.md#build-apk)
+- [Nexus public utils](/maven/nexusUpload-use.md#nexus-public-utils)
+    - [notes](/maven/nexusUpload-use.md#notes)
+    - [Setting Plugin](/maven/nexusUpload-use.md#setting-plugin)
+        - [POM_PACKAGING](/maven/nexusUpload-use.md#pom_packaging)
+- [nexus upload](/maven/nexusUpload-use.md#nexus-upload)
+
+
+[/jacoco/jacoco-android-use](/jacoco/jacoco-android-use.md)
+
+- [jacoco-android](/jacoco/jacoco-android-use.md#jacoco-android)
+    - [notes](/jacoco/jacoco-android-use.md#notes)
+    - [jacoco coverage](/jacoco/jacoco-android-use.md#jacoco-coverage)
 
 
 --------------
