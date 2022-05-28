@@ -14,7 +14,7 @@ repo: [https://github.com/bridgewwater/android-ndk-temple](https://github.com/br
 | com.android.tools.build:gradle | 4.1.3   |
 | android build tools | 30.0.5 |
 | android compile sdk | 30 |
-| android min sdk | 21 |
+| android min sdk | 24 |
 | android target sdk | 26 |
 
 - library version
