@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
+    compileSdkVersion cfg_android["compileSdkVersion"]
     //    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId "com.sinlov.android.ndkmodule.demo"
         // Specifies the application ID for the test APK.
 //        testApplicationId "com.sinlov.android.ndkmodule.demo.test"
-        minSdkVersion ANDROID_MIN_SDK_VERSION as int
-        targetSdkVersion ANDROID_TARGET_SDK_VERSION as int
+        minSdkVersion cfg_android["minSdkVersion"]
+        targetSdkVersion cfg_android["targetSdkVersion"]
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
 //        multiDexEnabled true

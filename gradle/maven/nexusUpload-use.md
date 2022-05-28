@@ -31,12 +31,6 @@ In `root gradle.properties` edit
 VERSION_NAME=1.1.1
 VERSION_CODE=1001001
 
-# Project comple set
-ANDROID_COMPILE_SDK_VERSION = 23
-ANDROID_BUILD_TOOLS_VERSION = 23.0.3
-ANDROID_MIN_SDK_VERSION = 15
-ANDROID_TARGET_SDK_VERSION = 15
-
 # important!
 GROUP=com.code.android
 
@@ -63,10 +57,6 @@ POM_DESCRIPTION=
 |---|---|---|
 |VERSION_NAME|version|like 0.0.1 for change release or debug|
 |VERSION_CODE|code|for update|
-|ANDROID_COMPILE_SDK_VERSION|compile sdk version|version for compile|
-|ANDROID_BUILD_TOOLS_VERSION|build tools version|version of build tools|
-|ANDROID_MIN_SDK_VERSION|min sdk version|version of this module support|
-|ANDROID_TARGET_SDK_VERSION|target sdk version|version of target|
 |SNAPSHOT_REPOSITORY_URL|snapshot repository| Nexus user can Override by env `SNAPSHOT_REPOSITORY_URL` default is mavenCenter snapshot |
 |RELEASE_REPOSITORY_URL|release repository| Nexus user can Override by env `RELEASE_REPOSITORY_URL` default is mavenCenter release |
 |GROUP|group ID|like package name com.game.package|
@@ -110,12 +100,8 @@ In `module build.gradle` edit
 
 ```gradle
 android {
-    compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
-    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion ANDROID_MIN_SDK_VERSION as int
-        targetSdkVersion ANDROID_TARGET_SDK_VERSION as int
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
     }

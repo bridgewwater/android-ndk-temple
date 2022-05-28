@@ -3,13 +3,13 @@ apply plugin: 'com.android.library'
 apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
 
 android {
-    compileSdkVersion ANDROID_COMPILE_SDK_VERSION as int
+    compileSdkVersion cfg_android["compileSdkVersion"]
 
     ndkVersion "22.0.7026061" // ndk-setting: ndk version
 
     defaultConfig {
-        minSdkVersion ANDROID_MIN_SDK_VERSION as int
-        targetSdkVersion ANDROID_TARGET_SDK_VERSION as int
+        minSdkVersion cfg_android["minSdkVersion"]
+        targetSdkVersion cfg_android["targetSdkVersion"]
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
 //        multiDexEnabled true
