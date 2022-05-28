@@ -10,6 +10,9 @@ demoDependImplementation:
 demoDependReleaseCompileClasspath:
 	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):dependencies --configuration releaseCompileClasspath
 
+demoDependReleaseCompileClasspathForce:
+	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):dependencies --configuration releaseCompileClasspath --refresh-dependencies
+
 demoTest:
 	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):test
 

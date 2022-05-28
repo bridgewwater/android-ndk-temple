@@ -13,6 +13,9 @@ ndkmoduleDependImplementation:
 ndkmoduleDependReleaseCompileClasspath:
 	$(ROOT_PWD)/gradlew -q $(ROOT_MODULE_ndkmodule):dependencies --configuration releaseCompileClasspath
 
+ndkmoduleDependReleaseCompileClasspathForce:
+	$(ROOT_PWD)/gradlew -q $(ROOT_MODULE_ndkmodule):dependencies --configuration releaseCompileClasspath --refresh-dependencies
+
 ndkmoduleTest:
 	$(ROOT_PWD)/gradlew -q $(ROOT_MODULE_ndkmodule):test
 
