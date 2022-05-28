@@ -5,7 +5,7 @@ apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
 android {
     compileSdkVersion cfg_android["compileSdkVersion"]
 
-    ndkVersion "22.0.7026061" // ndk-setting: ndk version
+    ndkVersion cfg_android["ndkVersion"] // ndk-setting: ndk version
 
     defaultConfig {
         minSdkVersion cfg_android["minSdkVersion"]
@@ -17,7 +17,8 @@ android {
         externalNativeBuild {
             cmake { // ndk-setting: arguments cFlags cppFlags
                 arguments "-DANDROID_TOOLCHAIN=clang",
-                        "-DANDROID_PLATFORM=android-21" // see build_command.txt to check platform version at $module_root/.cxx
+                        "-DANDROID_PLATFORM=android-21"
+                // see build_command.txt to check platform version at $module_root/.cxx
 //                cFlags ""
 //                cppFlags ""
             }
