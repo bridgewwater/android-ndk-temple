@@ -26,8 +26,8 @@ def checkNexusModuleConfig() {
     String pomLicenceDist = getPomLicenceDist()
     String pomDescription = getPomDescription()
     if (
-    isStringEmpty(versionName) || versionCode == 0 || isStringEmpty(groupSet) ||
-            isStringEmpty(pomArtifactId) || isStringEmpty(pomName)
+            isStringEmpty(versionName) || versionCode == 0 || isStringEmpty(groupSet) ||
+                    isStringEmpty(pomArtifactId) || isStringEmpty(pomName)
     ) {
         throw new IllegalArgumentException("checkNexusModuleConfig error, please check log!")
     } else {
@@ -95,10 +95,13 @@ boolean isStringEmpty(str) {
 }
 
 boolean isReleaseBuild() {
-    return VERSION_NAME.contains("SNAPSHOT") == false
+    return getVersionName().contains("SNAPSHOT") == false
 }
 
 String getVersionName() {
+    if (!isStringEmpty(System.getenv('NEXUS_VERSION_NAME'))) {
+        return System.getenv('NEXUS_VERSION_NAME')
+    }
     if (hasProperty('VERSION_NAME')) {
         return VERSION_NAME
     } else {
@@ -298,6 +301,15 @@ afterEvaluate { project ->
                         }
                     }
                 }
+            }
+            doLast {
+                println """=> uploadArchives success:
+repository url : ${this.isReleaseBuild() ? this.getReleaseRepositoryUrl() : this.getSnapshotRepositoryUrl()} 
+pom.groupId    : ${this.getGroupSet()}
+pom.artifactId : ${this.getPomArtifactId()}
+pom.version    : ${this.getVersionName()}
+gradle useage  : implementation "${this.getGroupSet()}:${this.getPomArtifactId()}:${this.getVersionName()}"
+"""
             }
         }
     }

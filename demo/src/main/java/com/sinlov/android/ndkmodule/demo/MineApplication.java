@@ -3,6 +3,10 @@ package com.sinlov.android.ndkmodule.demo;
 import android.app.Application;
 
 import com.hjq.toast.ToastUtils;
+import com.sinlov.temp.android.system.AMLUtil;
+import com.sinlov.temp.android.utils.log.LoggerPrintTree;
+
+import timber.log.Timber;
 
 
 public class MineApplication extends Application {
@@ -24,6 +28,14 @@ public class MineApplication extends Application {
     }
 
     private void initSDK(Application application) {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new LoggerPrintTree());
+            Timber.tag("MineApplication");
+            Timber.d("just open log print");
+        }
+        AMLUtil.getInstance()
+                .init(application)
+                .setDebug(true);
         ToastUtils.init(this);
     }
 }

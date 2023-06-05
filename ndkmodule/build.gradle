@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-// uploadArchives
-apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
 
 android {
     compileSdkVersion cfg_android["compileSdkVersion"]
@@ -17,7 +15,7 @@ android {
         externalNativeBuild {
             cmake { // ndk-setting: arguments cFlags cppFlags
                 arguments "-DANDROID_TOOLCHAIN=clang",
-                        "-DANDROID_PLATFORM=android-21"
+                        "-DANDROID_PLATFORM=android-${cfg_android["targetSdkVersion"]}"
                 // see build_command.txt to check platform version at $module_root/.cxx
 //                cFlags ""
 //                cppFlags ""
@@ -35,8 +33,7 @@ android {
         abi { // ndk-setting: abi split
             enable true
             reset()
-            // include 'armeabi-v7a', "arm64-v8a", "x86", "x86_64"
-            include 'armeabi-v7a', "arm64-v8a"
+            include 'armeabi-v7a', "arm64-v8a", "x86", "x86_64"
             universalApk false
         }
     }
@@ -128,3 +125,8 @@ dependencies {
         //todo snapshot depends
     }
 }
+
+// uploadArchives
+apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
+// jacoco android library
+apply from: rootProject.file("gradle/jacoco/jacoco-android-library.gradle")

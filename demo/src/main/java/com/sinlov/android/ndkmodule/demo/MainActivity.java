@@ -10,9 +10,12 @@ import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import com.sinlov.android.ndkmodule.Plugin;
 import com.sinlov.temp.android.AbsTemplateActivity;
+import com.sinlov.temp.android.system.PMSUtil;
 import com.sinlov.temp.android.utils.ClipboardUtils;
 
 import java.util.List;
+
+import timber.log.Timber;
 
 public class MainActivity extends AbsTemplateActivity {
 
@@ -30,6 +33,13 @@ public class MainActivity extends AbsTemplateActivity {
                 R.id.btn_grant_permission,
                 R.id.tv_result
         );
+        TextView tvInfo = findViewById(R.id.tv_info);
+        tvInfo.setText(String.format("Name: %s, %s",
+                PMSUtil.selfAppName(this),
+                PMSUtil.isSelfDebug(this) ? "mode DEBUG" : "Release"
+        ));
+
+        Timber.d("now TAG %s", TAG);
     }
 
     @Override
