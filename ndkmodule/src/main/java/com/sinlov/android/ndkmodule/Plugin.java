@@ -9,9 +9,11 @@ public final class Plugin {
         System.loadLibrary("ndkmodule-lib");
     }
 
+    public native String moduleVersion();
+
     public native String sayHello();
 
-    public native String version();
+    public native String getPackageName();
 
     /**
      * do biz

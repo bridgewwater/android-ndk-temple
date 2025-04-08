@@ -26,6 +26,12 @@ Java_com_sinlov_android_ndkmodule_Plugin_sayHello(JNIEnv *env, jobject thiz) {
 }
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_sinlov_android_ndkmodule_Plugin_version(JNIEnv *env, jobject thiz) {
+Java_com_sinlov_android_ndkmodule_Plugin_moduleVersion(JNIEnv *env, jobject thiz) {
     return env->NewStringUTF(ndkmoduleVersion);
+}
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_sinlov_android_ndkmodule_Plugin_getPackageName(JNIEnv *env, jobject thiz) {
+    return env->NewStringUTF(n2JGetPackageName(env));
 }

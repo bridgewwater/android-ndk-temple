@@ -8,6 +8,7 @@
 #include "ndkmoduleLog.h"
 
 #define HEX_VALUES "0123456789ABCDEF"
+#define TEST_BUFFER_SIZE 16
 
 char *jstring2cStr(JNIEnv *env, jstring jstr) {
     const char *temp = (char *) env->GetStringUTFChars(jstr, JNI_FALSE);
@@ -42,6 +43,13 @@ double jDouble2Double(JNIEnv *env, jdouble jdn) {
         return 0;
     }
     return jdn;
+}
+
+unsigned char jByteArray2Chat(JNIEnv *env, jbyteArray buffer, jint len){
+
+    unsigned char array = '\0';
+    env->GetByteArrayRegion(buffer, 0, len, reinterpret_cast<jbyte *>(array));
+    return array;
 }
 
 //jint jintArrayParse(JNIEnv* env, jintArray attr){

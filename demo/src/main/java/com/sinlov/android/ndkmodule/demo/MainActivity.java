@@ -1,7 +1,7 @@
 package com.sinlov.android.ndkmodule.demo;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,6 +31,8 @@ public class MainActivity extends AbsTemplateActivity {
                 R.id.btn_skip_to_module,
                 R.id.btn_skip_app_details,
                 R.id.btn_grant_permission,
+                R.id.btn_get_package_name,
+                R.id.btn_get_module_version,
                 R.id.tv_result
         );
         TextView tvInfo = findViewById(R.id.tv_info);
@@ -44,7 +46,9 @@ public class MainActivity extends AbsTemplateActivity {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-
+        if (BuildConfig.DEBUG) {
+            Timber.d("activity initData, only show at debug package");
+        }
     }
 
     @Override
@@ -53,17 +57,33 @@ public class MainActivity extends AbsTemplateActivity {
         if (id == R.id.btn_init_check) {
             toastBottom("module init check");
         } else if (id == R.id.btn_skip_to_module) {
-//            toast("Skip to module");
-            toast(String.format("ndk sayHello: %s", Plugin.getInstance().sayHello()));
+//            toast("Skip to module wait change!");
+            toast(String.format("Skip to module wait change!\nndk sayHello: %s", Plugin.getInstance().sayHello()));
         } else if (id == R.id.btn_skip_app_details) {
             XXPermissions.startApplicationDetails(this);
         } else if (id == R.id.btn_grant_permission) {
             requestFullPermission();
+        } else if (id == R.id.btn_get_package_name) {
+            String showInfo = String.format("ndk getPackageName: %s", Plugin.getInstance().getPackageName());
+            showAtTvResult(showInfo);
+            toast(showInfo);
+        } else if (id == R.id.btn_get_module_version) {
+            String showInfo = String.format("ndk moduleVersion: %s", Plugin.getInstance().moduleVersion());
+            showAtTvResult(showInfo);
+            toast(showInfo);
         } else if (id == R.id.tv_result) {
             TextView tvResult = findViewById(R.id.tv_result);
             ClipboardUtils.copy2Clipboard(getBaseContext(), tvResult.getText().toString());
             toast("copy at Clipboard");
         }
+    }
+
+    private void showAtTvResult(String info) {
+        if (TextUtils.isEmpty(info)) {
+            info = "<info nil please check>";
+        }
+        TextView tvResult = findViewById(R.id.tv_result);
+        tvResult.setText(info);
     }
 
     private void requestFullPermission() {

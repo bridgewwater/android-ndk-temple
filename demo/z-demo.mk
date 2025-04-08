@@ -31,6 +31,9 @@ demoAssembleRelease: demoRelease
 demoInstallDebug:
 	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):installDebug
 
+demoUninstallAll:
+	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):uninstallAll
+
 demoLaunch:
 	@adb shell am start -n ${ROOT_APP_PACKAGE_demo}/${ROOT_APP_LAUNCHER_ACTIVITY_demo} ${ROOT_APP_LANCHER_PARAMS_demo}
 
@@ -56,5 +59,6 @@ help-demo:
 	@echo "make ${ROOT_APP_NAME_demo}InstallDebug                  ~> install debug of module [ ${ROOT_APP_NAME_demo} ]"
 	@echo "make ${ROOT_APP_NAME_demo}LaunchDebug                   ~> install debug and launch of module [ ${ROOT_APP_NAME_demo} ]"
 	@echo "make ${ROOT_APP_NAME_demo}InstallRelease                ~> install release of module [ ${ROOT_APP_NAME_demo} ]"
+	@echo "make ${ROOT_APP_NAME_demo}UninstallAll                  ~> uninstall All of module [ ${ROOT_APP_NAME_demo} ]"
 	@echo "make ${ROOT_APP_NAME_demo}LaunchRelease                 ~> install release and launch of module [ ${ROOT_APP_NAME_demo} ]"
 	@echo ""
