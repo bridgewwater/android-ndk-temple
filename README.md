@@ -8,10 +8,10 @@ repo: [https://github.com/bridgewwater/android-ndk-temple](https://github.com/br
 
 | item           | version |
 | :------------- | :------ |
-| jdk            | 1.8+    |
+| jdk            | 1.11   |
 | gradle         | 6.5+    |
-| android studio | 4.1.0+  |
 | com.android.tools.build:gradle | 4.1.3   |
+| android studio | 4.1.0+  |
 | android build tools | 30.0.5 |
 | android compile sdk | 30 |
 | android min sdk | 24 |
@@ -39,7 +39,7 @@ more version see [config.gradle](config.gradle)
 
 application use [view binding](https://developer.android.com/topic/libraries/view-binding)
 
-if can not found databinding class, just use `File -> Invalidate Caches / Just Restart` 
+if can not found databinding class, just use `File -> Invalidate Caches / Just Restart`
 
 ## module debug
 
