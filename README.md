@@ -8,32 +8,32 @@ repo: [https://github.com/bridgewwater/android-ndk-temple](https://github.com/br
 
 > max `jdk version 1.11`, `android studio 2021`
 
-| item           | version |
-| :------------- | :------ |
-| jdk            | 1.8+    |
-| gradle         | 6.5+    |
+| item                           | version |
+|:-------------------------------|:--------|
+| jdk                            | 1.8+    |
+| gradle                         | 6.5+    |
 | com.android.tools.build:gradle | 4.1.3   |
-| android studio | 4.1.0+  |
-| android build tools | 30.0.5 |
-| android compile sdk | 30 |
-| android min sdk | 24 |
-| android target sdk | 26 |
+| android studio                 | 4.1.0+  |
+| android build tools            | 30.0.5  |
+| android compile sdk            | 30      |
+| android min sdk                | 24      |
+| android target sdk             | 26      |
 
 - library version
 
-| item                           | version |
-| :----------------------------- | :------ |
-| androidx.multidex:multidex     | 2.0.1   |
-| androidx.appcompat:appcompat   | 1.2.0   |
-| com.google.dagger:dagger       | 2.3.2   |
-| com.google.dagger:hilt-android | 2.32-alpha   |
+| item                           | version    |
+|:-------------------------------|:-----------|
+| androidx.multidex:multidex     | 2.0.1      |
+| androidx.appcompat:appcompat   | 1.2.0      |
+| com.google.dagger:dagger       | 2.3.2      |
+| com.google.dagger:hilt-android | 2.32-alpha |
 
 - test library version
 
-| item                           | version |
-| :----------------------------- | :------ |
-| junit:junit:                   | 4.12    |
-| org.robolectric:robolectric    | 4.4     |
+| item                        | version |
+|:----------------------------|:--------|
+| junit:junit:                | 4.12    |
+| org.robolectric:robolectric | 4.4     |
 
 more version see [config.gradle](config.gradle)
 
@@ -49,7 +49,7 @@ if can not found databinding class, just use `File -> Invalidate Caches / Just R
 - enter `Run/Debug Configurations`
 - choose want debug module, and to config pager `Debugger`
 - select `Debug type:` to `Dual (Java + Native)`
-  - or select `Debug type:` to `Native`
+    - or select `Debug type:` to `Native`
 
 ## module
 
