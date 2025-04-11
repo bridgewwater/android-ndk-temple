@@ -6,18 +6,19 @@ repo: [https://github.com/bridgewwater/android-ndk-temple](https://github.com/br
 
 ## env
 
-> max `jdk version 1.21`, `android studio 2024`
+> max `jdk version 1.17`, `android studio 2024`
 
-| item                           | version |
-|:-------------------------------|:--------|
-| jdk                            | 1.17+   |
-| gradle                         | 7.2+    |
-| com.android.tools.build:gradle | 7.1.3   |
-| android studio                 | 2021+   |
-| android build tools            | 30.0.5  |
-| android compile sdk            | 30      |
-| android min sdk                | 24      |
-| android target sdk             | 26      |
+| item                           | version      |
+|:-------------------------------|:-------------|
+| jdk                            | 1.17+        |
+| ndk                            | 22.0.7026061 |
+| gradle                         | 7.2+         |
+| com.android.tools.build:gradle | 7.1.3        |
+| android studio                 | 2021+        |
+| android build tools            | 30.0.5       |
+| android compile sdk            | 30           |
+| android min sdk                | 24           |
+| android target sdk             | 26           |
 
 - library version
 
