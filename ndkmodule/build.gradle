@@ -128,6 +128,6 @@ dependencies {
 }
 
 // uploadArchives
-apply from: rootProject.file("gradle/maven/nexusUpload.gradle")
-// jacoco android library
+apply from: rootProject.file("gradle/maven/publishUpload.gradle")
+// jacoco android
 apply from: rootProject.file("gradle/jacoco/jacoco-android-library.gradle")
