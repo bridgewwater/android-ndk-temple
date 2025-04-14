@@ -5,28 +5,44 @@ ifndef ANDROID_HOME
 	exit 1
 endif
 
+.PHONY: env
+env:
+	@$(ROOT_PWD)/gradlew --version
+
 # init this project
 .PHONY: init
 init: checkEnvAndroidHome
 	@$(ROOT_PWD)/gradlew clean buildEnvironment --warning-mode all
 
-.PHONY: cleanRoot
-cleanRoot:
+.PHONY: clean.root
+clean.root:
 	$(ROOT_PWD)/gradlew clean
 
-.PHONY: cleanGradleBuildAndIdea
-cleanGradleBuildAndIdea:
-	$(ROOT_PWD)/gradlew clean cleanBuildCache cleanIdea
+.PHONY: clean.idea
+clean.idea:
+	$(ROOT_PWD)/gradlew cleanIdea
 
-.PHONY: adbCrash
-adbCrash: checkEnvAndroidHome
+clean.idea.module:
+	$(ROOT_PWD)/gradlew cleanIdeaModule
+
+.PHONY: clean.all
+clean.all: clean.root clean.idea
+	@echo "clean all done"
+
+.PHONY: adb.crash
+adb.crash: checkEnvAndroidHome
 	adb shell dumpsys dropbox --print data_app_crash
 
-.PHONY: helpAndroidBase
-helpAndroidBase:
+.PHONY: help.android.base
+help.android.base:
 	@echo "=> $(ROOT_PWD)/z-android-base.mk : android base task"
-	@echo "make init                    ~> init this project for check base build error"
-	@echo "make cleanRoot               ~> clean root"
-	@echo "make cleanGradleBuildAndIdea ~> clean root"
-	@echo "make adbCrash                ~> show last crash info"
+	@echo "make env                         ~> show project env"
+	@echo "make init                        ~> init this project for check base build error"
+	@echo ""
+	@echo "make clean.root                  ~> clean root"
+	@echo "make clean.idea.module           ~> clean gradle build cache"
+	@echo "make clean.idea                  ~> clean IDEA project files"
+	@echo "make clean.all                   ~> clean all"
+	@echo ""
+	@echo "make adb.crash                   ~> show last crash info"
 	@echo ""
