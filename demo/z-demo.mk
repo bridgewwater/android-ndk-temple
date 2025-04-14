@@ -6,39 +6,39 @@ ROOT_APP_LANCHER_PARAMS_demo :="-a android.intent.action.MAIN -c android.intent.
 
 .PHONY: demoClean
 demoClean:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):clean
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):clean
 
 .PHONY: demoDependImplementation
 demoDependImplementation:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):dependencies --configuration implementation
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):dependencies --configuration implementation
 
 .PHONY: demoDependReleaseCompileClasspath
 demoDependReleaseCompileClasspath:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):dependencies --configuration releaseCompileClasspath
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):dependencies --configuration releaseCompileClasspath
 
 .PHONY: demoTest
 demoTest:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):test
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):test
 
 .PHONY: demoDebug
 demoDebug:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):buildDebug
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):buildDebug
 
 .PHONY: demoRelease
 demoRelease:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):buildRelease
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):buildRelease
 
 .PHONY: demoAssembleDebug
 demoAssembleDebug:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):assembleDebug
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):assembleDebug
 
 .PHONY: demoAssembleRelease
 demoAssembleRelease: demoRelease
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):assembleRelease
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):assembleRelease
 
 .PHONY: demoInstallDebug
 demoInstallDebug:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):installDebug
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):installDebug
 
 .PHONY: demoLaunch
 demoLaunch:
@@ -50,7 +50,7 @@ demoLaunchDebug: demoInstallDebug demoLaunch
 
 .PHONY: demoInstallRelease
 demoInstallRelease:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):installRelease
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):installRelease
 
 .PHONY: demoLaunchRelease
 demoLaunchRelease: demoInstallRelease demoLaunch
@@ -58,7 +58,7 @@ demoLaunchRelease: demoInstallRelease demoLaunch
 
 .PHONY: demoUninstallAll
 demoUninstallAll:
-	$(ROOT_PWD)/gradlew -q $(ROOT_APP_NAME_demo):uninstallAll
+	${ENV_GRADLE_WRAPPER_EXEC} -q $(ROOT_APP_NAME_demo):uninstallAll
 
 .PHONY: help-demo
 help-demo:

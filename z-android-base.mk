@@ -7,30 +7,46 @@ endif
 
 .PHONY: env
 env:
-	@echo "======= env start ========"
-	@echo "ROOT_PWD          ${ROOT_PWD}"
-	@echo "======= env end ========"
+	@echo "================ env start ================"
+	@echo "ROOT_PWD                         ${ROOT_PWD}"
+	@echo "ENV_GRADLE_WRAPPER_EXEC          ${ENV_GRADLE_WRAPPER_EXEC}"
+	@echo "================ env end ================"
 	@echo ""
-	@$(ROOT_PWD)/gradlew --version
+	${ENV_GRADLE_WRAPPER_EXEC} --version
 
 # init this project
 .PHONY: init
 init: checkEnvAndroidHome
-	@$(ROOT_PWD)/gradlew clean buildEnvironment --warning-mode all
+	@${ENV_GRADLE_WRAPPER_EXEC} clean buildEnvironment --warning-mode all
 
 .PHONY: clean.root
 clean.root:
-	$(ROOT_PWD)/gradlew clean
+	${ENV_GRADLE_WRAPPER_EXEC} clean
 
 .PHONY: clean.idea
 clean.idea:
-	$(ROOT_PWD)/gradlew cleanIdea
+	${ENV_GRADLE_WRAPPER_EXEC} cleanIdea
 
+.PHONY: clean.idea.module
 clean.idea.module:
-	$(ROOT_PWD)/gradlew cleanIdeaModule
+	${ENV_GRADLE_WRAPPER_EXEC} cleanIdeaModule
+
+.PHONY: clean.build.catch
+clean.build.catch:
+	$(RM) -r .gradle/
+	$(info finish remove folder .gradle)
+	$(RM) -r build/
+	$(info finish remove folder .build)
+	$(RM) -r buildCache/
+	$(info finish remove folder .buildCache)
+	$(RM) -r buildCacheDir/
+	$(info finish remove folder .buildCacheDir)
+
+.PHONY: clean
+clean: clean.root
 
 .PHONY: clean.all
-clean.all: clean.root clean.idea
+clean.all: clean.root clean.idea clean.build.catch
 	@echo "clean all done"
 
 .PHONY: adb.crash
@@ -45,8 +61,10 @@ help.android.base:
 	@echo ""
 	@echo "make clean.root                  ~> clean root"
 	@echo "make clean.idea.module           ~> clean gradle build cache"
+	@echo "make clean.build.catch           ~> clean build catch"
 	@echo "make clean.idea                  ~> clean IDEA project files"
 	@echo "make clean.all                   ~> clean all"
+	@echo "make clean                       ~> clean sample"
 	@echo ""
 	@echo "make adb.crash                   ~> show last crash info"
 	@echo ""

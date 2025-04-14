@@ -1,9 +1,11 @@
 .PHONY: dist test build
 
 ifeq ($(OS),Windows_NT)
-ROOT_PWD=$(shell powershell -Command '(Get-Location).Path')
+  ROOT_PWD=$(shell powershell -Command '(Get-Location).Path')
+  ENV_GRADLE_WRAPPER_EXEC=.\gradlew.bat
 else
-ROOT_PWD=$(shell pwd)
+  ROOT_PWD=$(shell pwd)
+  ENV_GRADLE_WRAPPER_EXEC=./gradlew
 endif
 
 include z-android-base.mk
