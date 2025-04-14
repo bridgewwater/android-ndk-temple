@@ -1,7 +1,7 @@
 .PHONY: dist test build
 
 ifeq ($(OS),Windows_NT)
-ROOT_PWD=$(shell powershell -Command 'pwd')
+ROOT_PWD=$(shell powershell -Command '(Get-Location).Path')
 else
 ROOT_PWD=$(shell pwd)
 endif

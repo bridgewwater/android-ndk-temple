@@ -7,6 +7,10 @@ endif
 
 .PHONY: env
 env:
+	@echo "======= env start ========"
+	@echo "ROOT_PWD          ${ROOT_PWD}"
+	@echo "======= env end ========"
+	@echo ""
 	@$(ROOT_PWD)/gradlew --version
 
 # init this project
