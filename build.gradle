@@ -41,7 +41,7 @@ allprojects {
 //            maven { url REPO_SNAPSHOT_REPOSITORY_URL }
 //        }
         // public java and android repository
-        maven { url 'https://maven.aliyun.com/repository/public/' }
+        // maven { url 'https://maven.aliyun.com/repository/public/' }
         mavenCentral()
 //        jcenter()
         google()
