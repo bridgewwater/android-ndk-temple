@@ -12,11 +12,9 @@ import org.robolectric.shadows.ShadowToast;
 import androidx.lifecycle.Lifecycle;
 import androidx.test.core.app.ActivityScenario;
 
-import com.sinlov.android.ndkmodule.demo.databinding.ActivityMainBinding;
 
 import test.RoboTemp;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
 
@@ -77,8 +75,7 @@ public class MainActivityTest extends RoboTemp {
         this.activityScenario.onActivity(new ActivityScenario.ActivityAction<MainActivity>() {
             @Override
             public void perform(MainActivity activity) {
-                ActivityMainBinding binding = ActivityMainBinding.inflate(activity.getLayoutInflater());
-                TextView tvResult = binding.mainProfile.tvResult;
+                TextView tvResult = activity.findViewById(R.id.tv_result);
                 assertNotNull(tvResult);
                 tvResult.performClick();
                 // data-bing can ot test
